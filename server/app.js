@@ -2,8 +2,11 @@ const mysql = require('mysql');
 //const express = require('express');
 //const app = express();
 //const fs = require('fs');
+const Router = require('express');
+const { check } = require('express-validator');
 const cors = require('cors');
-
+const { validationResult } = require('express-validator');
+const router = new Router();
 const sql = 'select * from card';
 
 const conn = mysql.createConnection({
@@ -33,13 +36,6 @@ conn.connect((err) => {
 });
 app.use(cors());
 
-// app.get('newdev/Цифроваятехника', (req, res) => {
-//   conn.query(sql, function (err, results) {
-//     if (err) console.log(err);
-//     console.log(results);
-//     res.status(200).json(results);
-//   });
-
 app.get('/0', (req, res) => {
   conn.query(sql, function (err, results) {
     if (err) console.log(err);
@@ -58,39 +54,13 @@ for (let CategoryIndex = 1; CategoryIndex <= 5; CategoryIndex++) {
   });
 }
 
-app.post('/myaction', function(req, res) {
-
-  console.log('req.body');
-  console.log(req.body);
+app.post('/rega', (req, res) => {
+  console.log(req.body.mail);
+  console.log(req.body.pass);
+  if (req.body.pass === req.body.pass2) {
+    res.status(200).json(req.body);
+  } 
 });
-// app.get('/2', (req, res) => {
-//   conn.query(sql2, function (err, results) {
-//     if (err) console.log(err);
-//     console.log(results);
-//     res.status(200).json(results);
-//   });
-// });
-// app.get('/3', (req, res) => {
-//   conn.query(sql3, function (err, results) {
-//     if (err) console.log(err);
-//     console.log(results);
-//     res.status(200).json(results);
-//   });
-// });
-// app.get('/4', (req, res) => {
-//   conn.query(sql4, function (err, results) {
-//     if (err) console.log(err);
-//     console.log(results);
-//     res.status(200).json(results);
-//   });
-// });
-// app.get('/5', (req, res) => {
-//   conn.query(sql5, function (err, results) {
-//     if (err) console.log(err);
-//     console.log(results);
-//     res.status(200).json(results);
-//   });
-// });
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

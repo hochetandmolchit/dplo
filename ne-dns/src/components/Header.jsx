@@ -11,7 +11,69 @@ import {Link} from 'react-router-dom';
 import React from 'react';
 import { SearchContext } from '../App';
 
+
+
+
 function Header() {
+  const lgn = localStorage.getItem("mail");
+
+  function removeAcc(){
+    localStorage.setItem("mail", "");
+  }
+
+  function UserGreeting(props) {
+    return  <Link to="/reg" className="fs-5">
+    Войти
+  </Link>
+  }
+  
+  function GuestGreeting(props) {
+    return <Link to="/reg" className="fs-5" onClick={removeAcc}>
+    Выйти
+  </Link>
+  }
+
+  function GuestGreetingQ(props) {
+    return <span className="fs-5">
+  {loginIs}
+</span>
+  }
+
+  function UserGreetingQ(props) {
+    return<>
+    <i className="bi bi-person-fill pe-1"></i>
+    <span className="fs-5">
+    {loginIs}
+  </span>
+  </>
+  }
+
+  
+
+function Auth () {
+if (lgn == "") {
+  return <UserGreeting />;
+}
+else{
+  return <GuestGreeting />;
+}
+}
+
+function AuthL(){
+  if (lgn == "") {
+    return <GuestGreetingQ/>
+  }
+  else{
+   return <UserGreetingQ/>
+    }
+}
+
+  
+  console.log(lgn)
+ 
+  let [loginIs, SetloginIs]  = React.useState(lgn);
+ // SetloginIs(lgn);
+
 const {searchValue, setSearchValue} = React.useContext(SearchContext);
 
     return (
@@ -52,10 +114,7 @@ const {searchValue, setSearchValue} = React.useContext(SearchContext);
           <div className="profile">
             <div className="lich-cabinet">
               {' '}
-              <i className="bi bi-person-fill pe-1"></i>
-              <a href="#" className="fs-5">
-                Личный кабинет
-              </a>
+             <AuthL/>
             </div>
             <div className="korzina">
               <i className="bi bi-cart2"></i>{' '}
@@ -66,9 +125,8 @@ const {searchValue, setSearchValue} = React.useContext(SearchContext);
             <div className="auth">
               {' '}
               <i className="bi bi-box-arrow-right pe-1"></i>
-              <Link to="/reg" className="fs-5">
-                Вход
-              </Link>
+              
+              <Auth/>
             </div>
           </div>
         </div>

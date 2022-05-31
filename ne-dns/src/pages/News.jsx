@@ -14,7 +14,7 @@ export default class News extends Component {
   render() {
     return (
         <div className="body">
-      
+      <Header />
         <NavBar />
   
         <div className="wrapper">

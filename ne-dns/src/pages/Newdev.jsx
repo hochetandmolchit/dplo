@@ -37,7 +37,7 @@ React.useEffect(()=> {
     
       
     <div className="body">
-     
+     <Header />
       <NavBar />
       <Categories category ={category} onClickCategory={(index,value) => setCategory(index,value)}/>
       <div className="wrapper">

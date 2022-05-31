@@ -9,11 +9,12 @@ import Coupons from '../components/Coupons';
 import Card from '../components/Card';
 import CardsItem from '../card.json';
 import Categories from '../components/Categories'
+import Header from '../components/Header';
 
 function About() {
   return (
     <div className="body">
-      
+      <Header />
       <NavBar />
 
       <div className="wrapper">
