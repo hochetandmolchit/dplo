@@ -45,8 +45,8 @@ width: 100%;
     max-width: 100%;
 }
 
-.search{
-    width: 40%;
+.search{ 
+    
     display: inline-block;
     vertical-align: middle;  
 }
@@ -59,12 +59,16 @@ width: 100%;
 }
 
 .profile{
-    width: 20%;
+   
     display: inline-block;
     vertical-align: middle;  
 }
-
-
+.redAlert{
+    color: red;
+}
+.logout{
+    cursor: pointer;
+}
 .lich-cabinet{
     display: inline-block;
     vertical-align: middle; 
@@ -222,7 +226,16 @@ form {
 }
 
 
-
+.red{
+    background-color: #e03a27;
+    color: white !important;
+    margin-right: 10px;
+}
+.red:hover{
+    background-color: #a72c1e;
+    color: white !important;
+    margin-right: 10px;
+}
 
  .catalog-product {
     display: grid;

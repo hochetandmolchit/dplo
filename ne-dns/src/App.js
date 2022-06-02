@@ -3,6 +3,7 @@ import About from './pages/About';
 import Newdev from './pages/Newdev';
 import News from './pages/News';
 import RegForm from './pages/RegForm';
+import Shop  from './pages/Shop';
 import Header from './components/Header';
 import * as React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
@@ -12,7 +13,7 @@ export const LoginContext = React.createContext('');
 function App() {
   const [searchValue, setSearchValue] = React.useState('');
   let [loginIs, SetloginIs]  = React.useState("");
-  
+
   console.log(searchValue);
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
               <Route path="/news" element={<News />} />
               <Route path="/newdev" element={<Newdev />} />
               <Route path="/reg" element={<RegForm />} />
+              <Route path="/shop" element={<Shop />} />
             </Routes>
             </LoginContext.Provider>
           </div>

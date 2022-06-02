@@ -23,11 +23,11 @@ const Newdev = () => {
   
     let [CardsItem, SetCardsItem]  = React.useState([]);
 
-React.useEffect(()=> {
-    fetch("http://localhost:8000/"+category).then((res)=>{
-        return res.json();
-    }).then((json)=>{
-        SetCardsItem(json)
+React.useEffect( ()=> {
+   fetch("http://localhost:8000/"+category).then((res)=>{
+     return res.json();
+    }).then( (json)=>{
+       SetCardsItem(json)
     });
 },[category])
 
