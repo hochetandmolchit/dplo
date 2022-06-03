@@ -251,3 +251,20 @@ form {
     grid-template-columns: 1fr;
     margin-bottom: 20px;
 }
+.control__btn_dec{
+    border-radius: 50%;
+    width: 30px;
+    padding-top: 0px;
+    font-size: 15px;
+    height: 30px;
+    margin-right: 20px;
+    background-color: #e03b28c9;
+}
+.control__btn_inc{
+    background-color: #28e031bf;
+    border-radius: 50%;
+    width: 30px;
+    padding-top: 0px;
+    font-size: 15px;
+    height: 30px;
+}

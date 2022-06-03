@@ -72,11 +72,29 @@ app.post('/login', (req, res) => {
   });
 });
 
+app.post('/rega', (req, res) => {
+  const quer =
+    'SELECT username FROM `cardstore`.`user` WHERE username = ' + `"${req.body.mail}"`;
+  conn.query(quer, function (err, results, fields) {
+    if (results[0] == undefined) {
+      const zzzzz = "INSERT INTO `cardstore`.`user` (`username`, `userpass`) VALUES ("+`"${req.body.mail}", "${req.body.pass}"`+")";
+      console.log(zzzzz);
+      conn.query(zzzzz, function (err, results, fields) {
+        res.status(200).json(req.body);
+        
+      })
+     
+    } else {
+      
+    }
+  });
+});
+
 app.post('/shop', (req, res) => {
   // console.log(req.body.mail);
   // console.log(req.body.pass);
   const quer =
-    'SELECT id, title, price, count FROM `cardstore`.`cartuser` WHERE username = ' + `"${req.body.mail}"`;
+    'SELECT id, title, price, count, img FROM `cardstore`.`cartuser` WHERE username = ' + `"${req.body.mail}"`;
   console.log(quer);
 
   conn.query(quer, function (err, results, fields) {
@@ -85,16 +103,27 @@ app.post('/shop', (req, res) => {
 });
 
 app.post('/shoper', (req, res) => {
+  let qweq1 = 'SELECT username FROM cardstore.cartuser username WHERE username='+ `"${req.body.mail}"` ;
+  console.log(qweq1)
+  conn.query(qweq1,
+    function (err, results, fields) {
+      console.log(results[0])
+    })
+  // const zzzzq = "INSERT INTO `cardstore`.`cartuser` (`username`) VALUES"+`("${req.body.mail}")`;
+  //       console.log(zzzzq);
+  //       conn.query(zzzzq, function (err, results, fields) {
+        
+  //       })
 
-let qweq = 'SELECT title FROM cardstore.cartuser where title=' + `"${req.body.title}"`
+let qweq = 'SELECT title FROM cardstore.cartuser where title=' + `"${req.body.title}"` + "&& username = "+ `"${req.body.mail}"`  
 console.log(qweq)
   conn.query(qweq,
     function (err, results, fields) {
-      
+      console.log(results[0])
       if (results[0] == undefined) {
         const quer =
-    'INSERT INTO `cardstore`.`cartuser` (`username`, `title`, `price`, `count`) VALUES (' +
-    `"${req.body.mail}", "${req.body.title}", ${req.body.price}, ${req.body.count})`;
+    'INSERT INTO `cardstore`.`cartuser` (`username`, `title`, `price`, `count`, `img`) VALUES (' +
+    `"${req.body.mail}", "${req.body.title}", ${req.body.price}, ${req.body.count}, "${req.body.img}")`;
 
   conn.query(quer, function (err, results, fields) {
     console.log(quer);

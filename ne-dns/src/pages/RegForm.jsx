@@ -151,7 +151,7 @@ function setAlertName() {
       <input type="password" value={passS} onChange={event => setPassS(event.target.value)}  className="form-control" id="exampleInputPassword1" placeholder="Повторите пароль"/>
     </div>
     <div className="form-group  pb-3">
-     <input  type="submit" value="Submit" className="submitBtn" />
+     <input  type="submit" value="Зарегистрироваться" className="submitBtn" />
      </div>
   </form>
 
@@ -169,7 +169,7 @@ function setAlertName() {
     </div>
     
     <div className="form-group  pb-3">
-     <input  type="submit" value="Submit" className="submitBtn" />
+     <input  type="submit" value="Войти" className="submitBtn" />
      </div>
   </form>
   </div>
